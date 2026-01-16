@@ -4,8 +4,8 @@ import csv
 
 # Initialize speedtest
 st = speedtest.Speedtest(secure=True)
-
 st.get_best_server()
+
 # Run
 download_speed = st.download()/1_000_000
 upload_speed = st.upload()/1_000_000
@@ -19,4 +19,4 @@ print("\n", download_speed,"\n",  upload_speed,"\n", ping, "\n", timestamp)
 # Save ot csv
 with open("internet_speed_log.csv", "a", newline="") as file:
     writer = csv.writer(file)
-    writer.writerow([timestamp, download_speed, upload_speed, ping])
+    writer.writerow([timestamp, round(download_speed, 2), round(upload_speed, 2), ping])
